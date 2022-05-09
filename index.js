@@ -1,15 +1,14 @@
 //html generate
-const html = require('./html/generateHtml')
+const htmlEL = require('./src/generateHtml')
 
 //node 
 const fs = require('fs')
-const inquirer = require("inquirer")
+const inquirer = require('inquirer')
 
 //role cards
-const manager = require('./roles/manager')
-const engineer = require('./roles/engineer')
-const intern = require('./roles/intern')
-const { generate } = require('rxjs')
+const Manager = require('../lib/Manager')
+const engineer = require('./lib/engineer')
+const intern = require('./lib/intern')
 
 //team default 
 const team = []
@@ -124,7 +123,7 @@ const employeeEL = () => {
 
 //generate html page
 const html = err => {
-    fs.html('./html/index.html', err => {
+    fs.html('./dist/index.html', err => {
         if (err) {
             console.log(err);
             return;
@@ -138,7 +137,7 @@ const html = err => {
 managerEL()
     .then(employeeEL)
     .then(team => {
-        return html(team);
+        return htmlEL(team);
     })
     .then(page => {
         return html(page);

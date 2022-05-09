@@ -1,5 +1,5 @@
 # team profile generator
-
+really really dod not undersant why "const manager" isn't working... good in first run, i ll back for it ...
 #### Table of Contents
 1. [Description](#description)
 2. [Installation](#installation)

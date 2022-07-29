@@ -1,0 +1,39 @@
+header {
+    background-color: antiquewhite;
+    font-size: 50px;
+    margin-top: 0cm;
+    font-family: 'Edu NSW ACT Foundation', cursive;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+.body-container {
+    padding: 1cm;
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    background-color: antiquewhite;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto
+}
+
+
+.face {
+    width: 3cm;
+    height: 3cm;
+}
+
+
+.card {
+    background-color: aquamarine;
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    border-style: solid;
+    border-width: 5px;
+    border-color: antiquewhite;
+}
+
+ul,
+li {
+    list-style: none;
+}

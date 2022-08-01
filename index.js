@@ -18,7 +18,7 @@ function start() {
 }
 //add manager
 function addManager() {
-    inquirer.prompt([
+    return inquirer.prompt([
         {
             type: 'input',
             name: 'name',
@@ -51,32 +51,9 @@ function addManager() {
         addMember();
     });
 };
-//add member
-function addMember() {
-    inquirer
-        .prompt([
-            {
-                type: "list",
-                name: "title",
-                message: "which title belongs to the new member",
-                choices: ["Engineer", "Intern", "Manager", "How about NO"],
-            },
-        ])
-        .then((neww) => {
-            if (neww.title === "Engineer") {
-                addEngineer();
-            } else if (neww.title === "Intern") {
-                addIntern()
-            } else if (neww.title === "Manager") {
-                addManager();
-            } else {
-                generate();
-            }
-        });
-}
 //Engineer
 function addEngineer() {
-    inquirer.prompt([
+    return inquirer.prompt([
         {
             type: 'input',
             name: 'name',
@@ -111,7 +88,7 @@ function addEngineer() {
 };
 //intern
 function addIntern() {
-    inquirer.prompt([
+    return inquirer.prompt([
         {
             type: 'input',
             name: 'name',
@@ -129,7 +106,7 @@ function addIntern() {
         },
         {
             type: 'input',
-            name: 'Github Name',
+            name: 'school',
             message: 'What is the school of the Intern?',
         },
     ]).then((neww) => {
@@ -144,20 +121,55 @@ function addIntern() {
         addMember();
     });
 };
+//add member
+function addMember() {
+    return inquirer.prompt([
+        {
+            type: "list",
+            name: "title",
+            message: "A new member?",
+            choices: ["Engineer", "Intern", "Manager", "How about NO"],
+        },
+    ])
+        .then((neww) => {
+            if (neww.title === "Engineer") {
+                addEngineer();
+            } else if (neww.title === "Intern") {
+                addIntern()
+            } else if (neww.title === "Manager") {
+                addManager();
+            } else {
+                generate();
+            }
+        });
+}
+
+
+const data = `
+<html>
+${team.manager}
+${team.intern}
+${team.engineer}
+</html>
+`
+
+
 
 //final generate
-function generate() {
-    fs.writeFile('./html.lndex.html', data, err => {
-
+function generate(data) {
+    fs.writeFile('./html/html.html', page(team), err => {
         if (err) {
             console.log(err);
-            return;
         } else {
             console.log('Your team has been created');
-            return page(team)
         }
     })
 }
+
+
+
+
+
 
 
 

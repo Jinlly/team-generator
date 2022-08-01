@@ -64,7 +64,7 @@ generateHTML = function (data) {
 
     for (let i = 0; i < data.length; i++) {
         const member = data[i];
-        const role = team.getRole();
+        const role = member.getRole();
 
         if (role === 'Manager') {
             const managerCard = createManager(member);
